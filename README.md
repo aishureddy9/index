@@ -56,13 +56,13 @@ Axios: A promise-based HTTP client for making API requests.
 Express: A web framework for node.js used for building the API server.
 CORS: A package that provides support for express applications
 
-## Contributing
+## 
 ```
-git init              // create a new repo
-git clone repo        // create a copy of remote repo
-git status           // check the status
-git add .            // add all changes to the file
-git commit -m 'code changes'         // commit changes
+git init                             // create a new repo
+git clone repo                      // create a copy of remote repo
+git status                         // check the status
+git add .                         // add all changes to the file
+git commit -m 'code changes      // commit changes
 git push 
 ```
 
@@ -86,14 +86,27 @@ Setup a Systemd service to manage react application
 ```
 sudo systemctl start/stop/status my-frontend.service                           
 path : /etc/systemd/system/frontend.service
+[Unit]
+Description=My React Frontend Service
+After=syslog.target
+ 
+[Service]
+User=your_username
+WorkingDirectory=/path/to/your/frontend
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=10
+ 
+[Install]
+WantedBy=multi-user.target
 ```
 
 set-up reverse proxy nginx server to revert the port:3000 to port:8080
 ```
 sudo systemctl start/stop/status nginx
 path: /etc/nginx/sites-available/map
-sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/                           //Link configuration 
-sudo nginx -t                                        //test nginx command
+sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/        //Link configuration 
+sudo nginx -t                                            //test nginx command
 
 server {
   listen 8080;
@@ -103,4 +116,5 @@ server {
     proxy_pass http://localhost:3000/;
   }
 }
-``````                   //Access the application at https:EC2_ip_address:8080
+``````
+Access the application at https:EC2_ip_address:8080
