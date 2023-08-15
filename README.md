@@ -26,7 +26,7 @@ This application contains a React component that displays a map with markers usi
 6. Enabled various controls such as Navigation, Scale, Geolocation, and Fullscreen controls.
 
 
-### Marker Customization
+#### Marker Customization
 
 The `Pin` component takes two props: `type` and `size`. The `type` prop specifies the marker type, and the `size` prop specifies the size of the marker. The color of the marker is determined by the `colorEnum` object based on the `type` prop.
 
@@ -69,36 +69,24 @@ The application is fetching the location data from a remote API using Axios and 
 
 ## Dependencies
 
-React and React DOM:
-
-React and React DOM are used to create and render the map component and other UI elements in the application.
-
-react-map-gl:
-
-The `react-map-gl` library provides the tools to display an interactive map within a React application. It includes components like `Map`, `Marker`, and various controls for navigation, scaling, and more.
-
-Axios:
-
-Axios is used to make HTTP requests to fetch location data from a remote API. The fetched data is then used to display markers on the map.
-
-Express and CORS:
-
-Express is used to set up a simple backend server that serves as an intermediary between the front end and the remote API. CORS middleware is implemented to handle cross-origin requests.
-
-For the backend, the Express server provides an API endpoint that fetches data from the third-party API using Axios. The fetched data is then forwarded to the front end for rendering on the map.
+React and React DOM: used to create and render the map component and other UI elements. 
+react-map-gl: A react wrapper for Mapbox GL JS, used for displaying interactive maps. 
+Axios: A promise-based HTTP client for making API requests.
+Express: A web framework for node.js used for building the API server.
+CORS: A package that provides support for express applications
 
 
 ## Contributing
 
-git init // create a new repo
+git init              // create a new repo
 
-git clone repo // create a copy of remote repo
+git clone repo        // create a copy of remote repo
 
-git status // check the status
+git status           // check the status
 
-git add . // add all changes to the file
+git add .        // add all changes to the file
 
-git commit -m 'code changes' // commit changes
+git commit -m 'code changes'         // commit changes
 
 git push 
 
@@ -106,44 +94,28 @@ git push
 
 ### Deploying the application to an EC2 instance
 
-ssh -i keygen - generated an ssh key in the local machine
+ssh -i keygen  // generated an ssh key in the local machine
 
 ssh -i path/of/key.pem ec2-username@instance-public-ip
 
 sudo apt install nodejs
 sudo apt update
-sudo npm install  // install the essential packages and dependencies
+sudo npm install                       // install the essential packages and dependencies
 
 
-sudo systemctl start/stop/status my-frontend.service  // Setup a Systemd service to manage react application
+sudo systemctl start/stop/status my-frontend.service                          // Setup a Systemd service to manage react application
 
 path : /etc/systemd/system/frontend.service
 
-[Unit]
-Description=My React Frontend Service
-After=syslog.target
- 
-[Service]
-User=your_username
-WorkingDirectory=/path/to/your/frontend
-ExecStart=/usr/bin/npm start
-Restart=always
-
-RestartSec=10
- 
-[Install]
-WantedBy=multi-user.target
-
-
-nginx server:    // set-up reverse proxy nginx to revert the port:3000 to port:8080
+nginx server:                           // set-up reverse proxy nginx to revert the port:3000 to port:8080
 
 sudo systemctl start/stop/status nginx
 
 path: /etc/nginx/sites-available/map
 
-sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/       //Link configuration 
+sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/                           //Link configuration 
 
-sudo nginx -t    //test nginx command
+sudo nginx -t                                        //test nginx command
 
 server {
   listen 8080;
@@ -152,4 +124,4 @@ server {
   location / {
     proxy_pass http://localhost:3000/;
   }
-}                                  //Access the application at https:EC2_ip_address:8080
+}                                                            //Access the application at https:EC2_ip_address:8080
