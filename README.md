@@ -8,8 +8,10 @@ This application contains a React component that displays a map with markers usi
 
 ## Prerequisites
 
-- Node.js and npm installed on your machine.
+* Node.js and npm installed on your machine.
+  ```
   npm install
+  ```
 
 ## Features
 
@@ -20,7 +22,7 @@ This application contains a React component that displays a map with markers usi
 * Show popups with information when markers are clicked.
 * Enabled various controls such as Navigation, Scale, Geolocation, and Fullscreen controls.
 
-#### Marker Customization
+##### Marker Customization
 
 The `Pin` component takes two props: `type` and `size`. The `type` prop specifies the marker type, and the `size` prop specifies the size of the marker. The color of the marker is determined by the `colorEnum` object based on the `type` prop.
 
