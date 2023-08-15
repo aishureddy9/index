@@ -104,7 +104,7 @@ git push
 
 
 
-## Deploying the application to an EC2 instance
+### Deploying the application to an EC2 instance
 
 ssh -i keygen - generated an ssh key in the local machine
 
@@ -112,14 +112,10 @@ ssh -i path/of/key.pem ec2-username@instance-public-ip
 
 sudo apt install nodejs
 sudo apt update
-sudo npm install // install the essential packages and dependencies
+sudo npm install  // install the essential packages and dependencies
 
 
-// Setup a Systemd service to manage react application
-
-sudo systemctl start/stop/status my-frontend.service 
-
-// enabling administrators to manage the status of the service
+sudo systemctl start/stop/status my-frontend.service  // Setup a Systemd service to manage react application
 
 path : /etc/systemd/system/frontend.service
 
@@ -138,21 +134,16 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 
-// set-up reverse proxy nginx to revert the port:3000 to port:8080
 
-nginx server:
+nginx server:    // set-up reverse proxy nginx to revert the port:3000 to port:8080
 
 sudo systemctl start/stop/status nginx
 
-
 path: /etc/nginx/sites-available/map
 
-
-sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/   
-//Link configuration 
+sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/       //Link configuration 
 
 sudo nginx -t    //test nginx command
-
 
 server {
   listen 8080;
@@ -161,7 +152,4 @@ server {
   location / {
     proxy_pass http://localhost:3000/;
   }
-}   
-
-
-Access the application at https:EC2_ip_address:8080
+}                                  //Access the application at https:EC2_ip_address:8080
